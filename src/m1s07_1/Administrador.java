@@ -21,15 +21,32 @@ public class Administrador extends Empregado{
     }
 
     @Override
-    public double calcularSalario() {
-        return (super.calcularSalario() + getAjudaDeCusto());
+    public double calculaImposto(){
+        double salario = getSalarioBase() + getAjudaDeCusto();
+        return (salario * (getImposto()/100));
     }
 
+    @Override
+    public double calcularSalario() {
+        return ((getSalarioBase()+getAjudaDeCusto()) - calculaImposto());
+    }
+
+    @Override
+    public void folhaSalarial(){
+        System.out.println("-------- FOLHA SALARIAL " + getNome() + " --------");
+        System.out.println("\nVENCIMENTOS:");
+        System.out.printf("Salário base/30 dias trabalhados: R$ %.2f", getSalarioBase());
+        System.out.printf("\nAjuda de custos: R$ %.2f", getAjudaDeCusto());
+        System.out.printf("\nTotal vencimentos: R$ %.2f", (getSalarioBase()+getAjudaDeCusto()));
+        System.out.println("\n\nDESCONTOS:");
+        System.out.printf("Impostos: R$ %.2f", calculaImposto());
+        System.out.println("\n-------------------------------------------------");
+        System.out.printf("Vencimento líquido: R$ %.2f", calcularSalario());
+        System.out.println("\n-------------------------------------------------");
+    }
     public static void main(String[] args) {
         Administrador administrador = new Administrador("Joseclides", "Bento Gonçaves", "3222-2222", 22, 1322.47, 8, 375);
-
-        System.out.printf(administrador.getNome() + " possui salário base de R$ %.2f, imposto de %.2f%s e ajuda de custos de R$ %.2f, ficando com o salário líquido: R$ %.2f.",
-                administrador.getSalarioBase(), administrador.getImposto(), "%", administrador.getAjudaDeCusto(), administrador.calcularSalario());
+        administrador.folhaSalarial();
     }
 
 }
