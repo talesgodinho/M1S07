@@ -18,6 +18,10 @@ public class Animal {
         System.out.println("Animal movimentando");
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     @Override
     public String toString() {
         return  "nome='" + nome + '\'' +
