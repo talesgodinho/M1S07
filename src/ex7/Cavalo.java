@@ -1,19 +1,19 @@
-package m1s07_2;
+package ex7;
 
-public class Preguica extends Animal{
+public class Cavalo extends Animal{
 
-    public Preguica(String nome, String idade) {
+    public Cavalo(String nome, int idade) {
         super(nome, idade);
     }
 
     @Override
     public void emitirSom() {
-        System.out.println("Preguiça grunhindo");;
+        System.out.println("relinchando");;
     }
 
     @Override
     public void movimenta() {
-        System.out.println("Preguiça subindo em árvore");
+        System.out.println("galopando");
     }
 
     @Override

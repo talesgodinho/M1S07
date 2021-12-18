@@ -1,11 +1,11 @@
-package m1s07_2;
+package ex7;
 
 public class Animal {
 
     private String nome;
-    private String idade;
+    private int idade;
 
-    public Animal(String nome, String idade) {
+    public Animal(String nome, int idade) {
         this.nome = nome;
         this.idade = idade;
     }
@@ -20,9 +20,7 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "Animal{" +
-                "nome='" + nome + '\'' +
-                ", idade='" + idade + '\'' +
-                '}';
+        return  "nome='" + nome + '\'' +
+                ", idade='" + idade + " anos" + '\'';
     }
 }
