@@ -11,10 +11,27 @@ import java.util.ArrayList;
 
 public class Zoologico {
 
-    static ArrayList<Animal> jaulas = new ArrayList<>(10);
+    static ArrayList<Animal> jaulas = new ArrayList<>();
 
     public static void colocarNaJaula(Animal animal){
-        jaulas.add(animal);
+        if (jaulas.size() < 10)
+            jaulas.add(animal);
+        else
+            System.out.println("O Zoológico está lotado! Não foi possível receber " + animal.getClass().getSimpleName() + " " + animal.getNome());
+    }
+
+    public static void visitaZoo(){
+        System.out.println("\nVisitando as Jaulas:");
+
+        for (Animal animal : jaulas){
+            System.out.print(animal.getClass().getSimpleName() + " " + animal.toString() + " está ");
+            animal.emitirSom();
+            if (animal instanceof Cachorro || animal instanceof Cavalo) {
+                System.out.print(animal.getNome() + " está ");
+                animal.movimenta();
+            }
+        }
+
     }
 
     public static void main(String[] args) {
@@ -28,6 +45,7 @@ public class Zoologico {
         Preguica preguica2 = new Preguica("Preguiça 2", 2);
         Preguica preguica3 = new Preguica("Preguiça 3", 12);
         Preguica preguica4 = new Preguica("Preguiça 4", 8);
+        Preguica preguica5 = new Preguica("Preguiça 5", 8);
 
         colocarNaJaula(cachorro1);
         colocarNaJaula(cachorro2);
@@ -39,17 +57,9 @@ public class Zoologico {
         colocarNaJaula(preguica2);
         colocarNaJaula(preguica3);
         colocarNaJaula(preguica4);
+        colocarNaJaula(preguica5);
 
-        for (Animal animal : jaulas){
-            System.out.print(animal.getClass().getSimpleName() + " " + animal.toString() + " está ");
-            animal.emitirSom();
-            if (animal instanceof Cachorro || animal instanceof Cavalo) {
-                System.out.print(animal.getNome() + " está ");
-                animal.movimenta();
-            }
-        }
-
-
+        visitaZoo();
     }
 
 }
